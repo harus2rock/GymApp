@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Button gym = findViewById(button_gym);
         Button house = findViewById(button_house);
 
-        // textview
+        // TextView
         textView = findViewById(R.id.text_top);
 
         gym.setOnClickListener(new View.OnClickListener() {

@@ -44,8 +44,8 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:background="@android:color/holo_orange_light"
-            android:text="Gym"
-            android:textSize="30dp" />
+            android:text="@string/button_gym"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/button_house"
@@ -53,8 +53,8 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:background="@android:color/holo_blue_light"
-            android:text="House"
-            android:textSize="30dp" />
+            android:text="@string/button_house"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
