@@ -18,43 +18,49 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // レイアウトファイル
         setContentView(R.layout.activity_main);
 
-        // ボタンを設定
+        // ボタンidを設定
         Button gym = findViewById(button_gym);
         Button house = findViewById(button_house);
 
-        // TextView
+        // TextViewを設定
         textView = findViewById(R.id.text_top);
 
-        gym.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (flag) {
-                    textView.setText("in Gym");
-                    flag = false;
-                }
+        // gymボタンをクリックしたとき
+        gym.setOnClickListener(buttonClick);
 
-                else {
-                    textView.setText("Hello!");
-                    flag = true;
-                }
-            }
-        });
-
-        house.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (flag) {
-                    textView.setText("in House");
-                    flag = false;
-                }
-
-                else {
-                    textView.setText("Hello!");
-                    flag = true;
-                }
-            }
-        });
+        // houseボタンをクリックしたとき
+        house.setOnClickListener(buttonClick);
     }
+
+    private  View.OnClickListener buttonClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                // ジムボタンの時
+                case button_gym :
+                    if (flag) {
+                        textView.setText("in Gym");
+                        flag = false;
+                    } else {
+                        textView.setText("Hello!");
+                        flag = true;
+                    }
+                    break;
+
+                // ハウスボタンの時
+                case button_house :
+                    if (flag) {
+                        textView.setText("in House");
+                        flag = false;
+                    } else {
+                        textView.setText("Hello!");
+                        flag = true;
+                    }
+                    break;
+            }
+        }
+    };
 }
