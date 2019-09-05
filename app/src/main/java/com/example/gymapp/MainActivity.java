@@ -13,9 +13,6 @@ import static com.example.gymapp.R.id.button_house;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
-    private boolean flag = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         // ボタンidを設定
         Button gym = findViewById(button_gym);
         Button house = findViewById(button_house);
-
-        // TextViewを設定
-        textView = findViewById(R.id.text_top);
 
         // gymボタンをクリックしたとき
         gym.setOnClickListener(buttonClick);
@@ -64,31 +58,15 @@ public class MainActivity extends AppCompatActivity {
             switch (view.getId()) {
                 // ジムボタンの時
                 case button_gym :
-                    if (flag) {
-                        textView.setText("in Gym");
-                        flag = false;
-                    } else {
-                        textView.setText("Hello!");
-                        flag = true;
-                    }
-
                     setScreenGym();
-//                    Intent intent = new Intent(getApplication(), GymActivity.class);
-//                    startActivity(intent);
                     break;
 
                 // ハウスボタンの時
                 case button_house :
-                    if (flag) {
-                        textView.setText("in House");
-                        flag = false;
-                    } else {
-                        textView.setText("Hello!");
-                        flag = true;
-                    }
                     setScreenHouse();
                     break;
 
+                // ホームボタンの時
                 case R.id.button_home :
                     setScreenMain();
                     break;
