@@ -34,23 +34,23 @@ public class MainActivity extends AppCompatActivity {
         house.setOnClickListener(buttonClick);
     }
 
-    private void setScreenGym() {
-        // レイアウトファイル
-        setContentView(R.layout.activity_gym);
-
-        // ボタン
-        Button home = findViewById(R.id.button_home);
-        home.setOnClickListener(buttonClick);
-    }
-
-    private void setScreenHouse() {
-        // レイアウトファイル
-        setContentView(R.layout.activity_house);
-
-        // ボタン
-        Button home = findViewById(R.id.button_home);
-        home.setOnClickListener(buttonClick);
-    }
+//    private void setScreenGym() {
+//        // レイアウトファイル
+//        setContentView(R.layout.activity_gym);
+//
+//        // ボタン
+//        Button home = findViewById(R.id.button_home);
+//        home.setOnClickListener(buttonClick);
+//    }
+//
+//    private void setScreenHouse() {
+//        // レイアウトファイル
+//        setContentView(R.layout.activity_house);
+//
+//        // ボタン
+//        Button home = findViewById(R.id.button_home);
+//        home.setOnClickListener(buttonClick);
+//    }
 
     private  View.OnClickListener buttonClick = new View.OnClickListener() {
         @Override
@@ -58,18 +58,22 @@ public class MainActivity extends AppCompatActivity {
             switch (view.getId()) {
                 // ジムボタンの時
                 case button_gym :
-                    setScreenGym();
+//                    setScreenGym();
+                    Intent intent_gym = new Intent(getApplication(), GymActivity.class);
+                    startActivity(intent_gym);
                     break;
 
                 // ハウスボタンの時
                 case button_house :
-                    setScreenHouse();
+//                    setScreenHouse();
+                    Intent intent_house = new Intent(getApplication(), HouseActivity.class);
+                    startActivity(intent_house);
                     break;
 
-                // ホームボタンの時
-                case R.id.button_home :
-                    setScreenMain();
-                    break;
+//                // ホームボタンの時
+//                case R.id.button_home :
+//                    setScreenMain();
+//                    break;
             }
         }
     };
