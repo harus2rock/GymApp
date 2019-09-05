@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:textSize="30sp"
-                android:text="in Gym"
+                android:text="in House"
                 android:textColor="@android:color/white" />
 
         </FrameLayout>

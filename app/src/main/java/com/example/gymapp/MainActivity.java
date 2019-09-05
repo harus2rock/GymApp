@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setScreenMain();
+    }
+
+    private void setScreenMain() {
         // レイアウトファイル
         setContentView(R.layout.activity_main);
 
@@ -36,6 +40,24 @@ public class MainActivity extends AppCompatActivity {
         house.setOnClickListener(buttonClick);
     }
 
+    private void setScreenGym() {
+        // レイアウトファイル
+        setContentView(R.layout.activity_gym);
+
+        // ボタン
+        Button home = findViewById(R.id.button_home);
+        home.setOnClickListener(buttonClick);
+    }
+
+    private void setScreenHouse() {
+        // レイアウトファイル
+        setContentView(R.layout.activity_house);
+
+        // ボタン
+        Button home = findViewById(R.id.button_home);
+        home.setOnClickListener(buttonClick);
+    }
+
     private  View.OnClickListener buttonClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -50,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
                         flag = true;
                     }
 
-                    Intent intent = new Intent(getApplication(), GymActivity.class);
-                    startActivity(intent);
+                    setScreenGym();
+//                    Intent intent = new Intent(getApplication(), GymActivity.class);
+//                    startActivity(intent);
                     break;
 
                 // ハウスボタンの時
@@ -63,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
                         textView.setText("Hello!");
                         flag = true;
                     }
+                    setScreenHouse();
+                    break;
+
+                case R.id.button_home :
+                    setScreenMain();
                     break;
             }
         }
