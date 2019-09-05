@@ -2,6 +2,7 @@ package com.example.gymapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                         textView.setText("Hello!");
                         flag = true;
                     }
+
+                    Intent intent = new Intent(getApplication(), GymActivity.class);
+                    startActivity(intent);
                     break;
 
                 // ハウスボタンの時
