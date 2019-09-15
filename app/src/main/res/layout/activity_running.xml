@@ -38,35 +38,32 @@
             android:textSize="@dimen/text_size_head" />
 
     </LinearLayout>
-
     <Button
-        android:id="@+id/button_running"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Running"
-        android:textSize="@dimen/text_size_inner"
-        android:layout_margin="10dp"
-        android:background="@android:color/holo_blue_light"
-        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
-        app:layout_constraintBottom_toTopOf="@+id/button_machine"
-        app:layout_constraintVertical_chainStyle="packed"/>
-
-    <Button
-        android:id="@+id/button_machine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Machine"
-        android:textSize="@dimen/text_size_inner"
-        android:background="@android:color/holo_blue_dark"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button_running"
-        app:layout_constraintBottom_toTopOf="@+id/button_home"/>
-
-    <Button
-        android:id="@+id/button_home"
+        android:id="@+id/button_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
+        android:layout_margin="10dp"
+        android:text="Start"
+        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_stop"/>
+
+    <Button
+        android:id="@+id/button_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Stop"
+        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
+        app:layout_constraintStart_toEndOf="@+id/button_start"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
