@@ -16,7 +16,11 @@ public class GymActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gym);
 
         // ボタン
+        Button running = findViewById(R.id.button_running);
+        Button machine = findViewById(R.id.button_machine);
         Button home = findViewById(R.id.button_home);
+        running.setOnClickListener(buttonClick);
+        machine.setOnClickListener(buttonClick);
         home.setOnClickListener(buttonClick);
 
     }
@@ -25,6 +29,10 @@ public class GymActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
+                case R.id.button_running :
+                    break;
+                case R.id.button_machine :
+                    break;
                 case R.id.button_home :
                     finish();
                     break;
