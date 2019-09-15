@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_head">40sp</dimen>
+    <dimen name="height_head">150dp</dimen>
+    <dimen name="text_size_inner">30sp</dimen>
+</resources>
