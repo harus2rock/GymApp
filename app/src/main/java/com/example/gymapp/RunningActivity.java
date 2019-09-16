@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class RunningActivity extends AppCompatActivity {
@@ -39,11 +40,7 @@ public class RunningActivity extends AppCompatActivity {
 
     // Buttons
     private Button[] buttons;
-    private int[] ids_button = {R.id.button_4, R.id.button_5, R.id.button_9, R.id.button_10};
-
-    // Colors
-//    private int colorA = R.color.colorA;
-//    private int colorZ = ContextCompat.getColor(this, R.color.colorZ);
+    private Integer[] ids_button = {R.id.button_4, R.id.button_5, R.id.button_9, R.id.button_10};
 
     // Others
     private int count, period;
@@ -94,74 +91,29 @@ public class RunningActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.button_4:
-                    // タイマーがすでに動いてるときは先に殺す
-                    if (count != 0) {
-                        handler.removeCallbacks(runnable);
-                        timerText.setText(dataFormat.format(0));
-                        counts[clicked] += count;
-                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
-                        count = 0;
-                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
-                    }
-                    texts[0].setBackgroundResource(R.color.colorA);
-                    clicked = 0;
-                    handler.post(runnable);
-                    break;
-
-                case R.id.button_5:
-                    if (count != 0) {
-                        handler.removeCallbacks(runnable);
-                        timerText.setText(dataFormat.format(0));
-                        counts[clicked] += count;
-                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
-                        count = 0;
-                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
-                    }
-                    texts[1].setBackgroundResource(R.color.colorA);
-                    clicked = 1;
-                    handler.post(runnable);
-                    break;
-
-                case R.id.button_9:
-                    if (count != 0) {
-                        handler.removeCallbacks(runnable);
-                        timerText.setText(dataFormat.format(0));
-                        counts[clicked] += count;
-                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
-                        count = 0;
-                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
-                    }
-                    texts[2].setBackgroundResource(R.color.colorA);
-                    clicked = 2;
-                    handler.post(runnable);
-                    break;
-
-                case R.id.button_10:
-                    if (count != 0) {
-                        handler.removeCallbacks(runnable);
-                        timerText.setText(dataFormat.format(0));
-                        counts[clicked] += count;
-                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
-                        count = 0;
-                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
-                    }
-                    texts[3].setBackgroundResource(R.color.colorA);
-                    clicked = 3;
-                    handler.post(runnable);
-                    break;
-
-                case R.id.button_stop:
-                    handler.removeCallbacks(runnable);
-                    timerText.setText(dataFormat.format(0));
-                    counts[clicked] += count;
-                    texts[clicked].setText(dataFormat.format(counts[clicked]*period));
-                    texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
-                    count = 0;
-                    break;
-
                 case R.id.button_back :
                     finish();
+                    break;
+
+                default:
+                    // Stop callbacks when other button was clicked before
+                    if (count != 0) {
+                        handler.removeCallbacks(runnable);
+                        timerText.setText(dataFormat.format(0));
+                        counts[clicked] += count;
+                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
+                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
+                        count = 0;
+                    }
+
+                    if (view.getId() != R.id.button_stop){
+                        List<Integer> list = Arrays.asList(ids_button);
+                        int index = list.indexOf(view.getId());
+                        texts[index].setBackgroundResource(R.color.colorA);
+                        clicked = index;
+                        handler.post(runnable);
+                    }
+
                     break;
             }
         }
