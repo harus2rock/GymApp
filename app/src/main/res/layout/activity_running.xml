@@ -38,15 +38,49 @@
             android:textSize="@dimen/text_size_head" />
 
     </LinearLayout>
+
     <Button
-        android:id="@+id/button_start"
+        android:id="@+id/button_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Start"
+        android:text="4.0km/h"
         app:layout_constraintTop_toBottomOf="@+id/layout_clock"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_stop"/>
+        app:layout_constraintEnd_toStartOf="@+id/button_5"/>
+
+    <Button
+        android:id="@+id/button_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="5.5km/h"
+        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
+        app:layout_constraintStart_toEndOf="@+id/button_4"
+        app:layout_constraintEnd_toStartOf="@+id/button_9"
+        />
+
+    <Button
+        android:id="@+id/button_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="9.0km/h"
+        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
+        app:layout_constraintStart_toEndOf="@id/button_5"
+        app:layout_constraintEnd_toStartOf="@+id/button_10"
+        />
+
+    <Button
+        android:id="@+id/button_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="10.0km/h"
+        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
+        app:layout_constraintStart_toEndOf="@+id/button_9"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <Button
         android:id="@+id/button_stop"
@@ -54,10 +88,37 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Stop"
-        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
-        app:layout_constraintStart_toEndOf="@+id/button_start"
+        app:layout_constraintTop_toBottomOf="@+id/button_4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_inner"
+        app:layout_constraintTop_toBottomOf="@+id/button_stop" />
+
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_inner"
+        app:layout_constraintTop_toBottomOf="@+id/text4" />
+
+    <TextView
+        android:id="@+id/text9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_inner"
+        app:layout_constraintTop_toBottomOf="@+id/text5" />
+
+    <TextView
+        android:id="@+id/text10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_inner"
+        app:layout_constraintTop_toBottomOf="@+id/text9" />
 
     <Button
         android:id="@+id/button_back"
