@@ -46,7 +46,7 @@
         android:text="Running"
         android:textSize="@dimen/text_size_inner"
         android:layout_margin="10dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/colorA"
         app:layout_constraintTop_toBottomOf="@+id/layout_clock"
         app:layout_constraintBottom_toTopOf="@+id/button_machine"
         app:layout_constraintVertical_chainStyle="packed"/>
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="Machine"
         android:textSize="@dimen/text_size_inner"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/colorB"
         android:layout_margin="10dp"
         app:layout_constraintTop_toBottomOf="@+id/button_running"
         app:layout_constraintBottom_toTopOf="@+id/button_home"/>

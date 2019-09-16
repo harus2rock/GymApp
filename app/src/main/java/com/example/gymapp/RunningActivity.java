@@ -1,5 +1,6 @@
 package com.example.gymapp;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -26,15 +27,23 @@ public class RunningActivity extends AppCompatActivity {
         }
     };
 
+    // Timer
     private TextView timerText;
     private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
 
+    // Records
     private TextView[] texts;
+    private int[] ids_text = {R.id.text4, R.id.text5, R.id.text9, R.id.text10};
 
+    // Buttons
+    private Button[] buttons;
+    private int[] ids_button = {R.id.button_4, R.id.button_5, R.id.button_9, R.id.button_10};
+
+    // Others
     private int count, period;
     private int[] counts;
     private int clicked;
-    
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +58,7 @@ public class RunningActivity extends AppCompatActivity {
 
         clicked = 0; // saving clicked button
 
-        // textView タイマー表示箇所
+        // textView: Timer
         timerText = findViewById(R.id.text_clock);
         timerText.setText(dataFormat.format(0));
 
@@ -59,26 +68,32 @@ public class RunningActivity extends AppCompatActivity {
 //        TextView t_9 = findViewById(R.id.text9);
 //        TextView t_10 = findViewById(R.id.text10);
 
-        // textViewを一元管理
-        texts = new TextView[4];
-        texts[0] = findViewById(R.id.text4);
-        texts[1] = findViewById(R.id.text5);
-        texts[2] = findViewById(R.id.text9);
-        texts[3] = findViewById(R.id.text10);
+        // textView: Records
+        texts = new TextView[ids_text.length];
+        for (int i=0; i<ids_text.length; i++){
+            texts[i] = findViewById(ids_text[i]);
+        }
+//        texts[0] = findViewById(R.id.text4);
+//        texts[1] = findViewById(R.id.text5);
+//        texts[2] = findViewById(R.id.text9);
+//        texts[3] = findViewById(R.id.text10);
 
-        // ボタンたち
-        Button b_4 = findViewById(R.id.button_4);
-        Button b_5 = findViewById(R.id.button_5);
-        Button b_9 = findViewById(R.id.button_9);
-        Button b_10 = findViewById(R.id.button_10);
+        // Buttons
+        buttons = new Button[4];
+        for (int i=0; i<ids_button.length; i++){
+            buttons[i] = findViewById(ids_button[i]);
+        }
+//        buttons[0] = findViewById(R.id.button_4);
+//        buttons[1] = findViewById(R.id.button_5);
+//        buttons[2] = findViewById(R.id.button_9);
+//        buttons[3] = findViewById(R.id.button_10);
         Button stop = findViewById(R.id.button_stop);
         Button back = findViewById(R.id.button_back);
 
         // 押したとき
-        b_4.setOnClickListener(buttonClick);
-        b_5.setOnClickListener(buttonClick);
-        b_9.setOnClickListener(buttonClick);
-        b_10.setOnClickListener(buttonClick);
+        for (Button b : buttons) {
+            b.setOnClickListener(buttonClick);
+        }
         stop.setOnClickListener(buttonClick);
         back.setOnClickListener(buttonClick);
     }
