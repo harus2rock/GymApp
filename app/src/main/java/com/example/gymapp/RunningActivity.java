@@ -36,11 +36,14 @@ public class RunningActivity extends AppCompatActivity {
 
     // Records
     private TextView[] texts;
-    private int[] ids_text = {R.id.text4, R.id.text5, R.id.text9, R.id.text10};
+    private Integer[] ids_text = {R.id.text4, R.id.text5, R.id.text9, R.id.text10};
 
     // Buttons
     private Button[] buttons;
     private Integer[] ids_button = {R.id.button_4, R.id.button_5, R.id.button_9, R.id.button_10};
+
+    // Speeds
+    private Float[] speeds = {(float)4, (float)5.5, (float)9, (float)10};
 
     // Others
     private int count, period;
@@ -55,7 +58,9 @@ public class RunningActivity extends AppCompatActivity {
 
         count = 0;
         period = 100; // interval: 100msec
-
+        for (int i=0; i<speeds.length; i++) {
+            speeds[i] = speeds[i] * period / 3600000;
+        }
         counts = new int[4];
         Arrays.fill(counts, 0); // initialize counts
 
@@ -101,7 +106,10 @@ public class RunningActivity extends AppCompatActivity {
                         handler.removeCallbacks(runnable);
                         timerText.setText(dataFormat.format(0));
                         counts[clicked] += count;
-                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
+                        String time = String.valueOf(dataFormat.format(counts[clicked]*period));
+                        String distance = String.format(Locale.US," (%.2f km)", (float)counts[clicked]*speeds[clicked]);
+//                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
+                        texts[clicked].setText((time+distance));
                         texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
                         count = 0;
                     }
