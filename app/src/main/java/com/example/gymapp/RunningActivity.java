@@ -1,6 +1,7 @@
 package com.example.gymapp;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -39,6 +41,10 @@ public class RunningActivity extends AppCompatActivity {
     private Button[] buttons;
     private int[] ids_button = {R.id.button_4, R.id.button_5, R.id.button_9, R.id.button_10};
 
+    // Colors
+//    private int colorA = R.color.colorA;
+//    private int colorZ = ContextCompat.getColor(this, R.color.colorZ);
+
     // Others
     private int count, period;
     private int[] counts;
@@ -47,7 +53,7 @@ public class RunningActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // レイアウトファイル
+        // Layout
         setContentView(R.layout.activity_running);
 
         count = 0;
@@ -56,41 +62,27 @@ public class RunningActivity extends AppCompatActivity {
         counts = new int[4];
         Arrays.fill(counts, 0); // initialize counts
 
-        clicked = 0; // saving clicked button
+        clicked = 0; // Saving clicked button
 
-        // textView: Timer
+        // TextView: Timer
         timerText = findViewById(R.id.text_clock);
         timerText.setText(dataFormat.format(0));
 
-        // textView 記録たち
-//        TextView t_4 = findViewById(R.id.text4);
-//        TextView t_5 = findViewById(R.id.text5);
-//        TextView t_9 = findViewById(R.id.text9);
-//        TextView t_10 = findViewById(R.id.text10);
-
-        // textView: Records
+        // TextView: Records
         texts = new TextView[ids_text.length];
         for (int i=0; i<ids_text.length; i++){
             texts[i] = findViewById(ids_text[i]);
         }
-//        texts[0] = findViewById(R.id.text4);
-//        texts[1] = findViewById(R.id.text5);
-//        texts[2] = findViewById(R.id.text9);
-//        texts[3] = findViewById(R.id.text10);
 
         // Buttons
-        buttons = new Button[4];
+        buttons = new Button[ids_button.length];
         for (int i=0; i<ids_button.length; i++){
             buttons[i] = findViewById(ids_button[i]);
         }
-//        buttons[0] = findViewById(R.id.button_4);
-//        buttons[1] = findViewById(R.id.button_5);
-//        buttons[2] = findViewById(R.id.button_9);
-//        buttons[3] = findViewById(R.id.button_10);
         Button stop = findViewById(R.id.button_stop);
         Button back = findViewById(R.id.button_back);
 
-        // 押したとき
+        // When buttons are clicked
         for (Button b : buttons) {
             b.setOnClickListener(buttonClick);
         }
@@ -110,7 +102,9 @@ public class RunningActivity extends AppCompatActivity {
                         counts[clicked] += count;
                         texts[clicked].setText(dataFormat.format(counts[clicked]*period));
                         count = 0;
+                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
                     }
+                    texts[0].setBackgroundResource(R.color.colorA);
                     clicked = 0;
                     handler.post(runnable);
                     break;
@@ -122,7 +116,9 @@ public class RunningActivity extends AppCompatActivity {
                         counts[clicked] += count;
                         texts[clicked].setText(dataFormat.format(counts[clicked]*period));
                         count = 0;
+                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
                     }
+                    texts[1].setBackgroundResource(R.color.colorA);
                     clicked = 1;
                     handler.post(runnable);
                     break;
@@ -134,7 +130,9 @@ public class RunningActivity extends AppCompatActivity {
                         counts[clicked] += count;
                         texts[clicked].setText(dataFormat.format(counts[clicked]*period));
                         count = 0;
+                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
                     }
+                    texts[2].setBackgroundResource(R.color.colorA);
                     clicked = 2;
                     handler.post(runnable);
                     break;
@@ -146,7 +144,9 @@ public class RunningActivity extends AppCompatActivity {
                         counts[clicked] += count;
                         texts[clicked].setText(dataFormat.format(counts[clicked]*period));
                         count = 0;
+                        texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
                     }
+                    texts[3].setBackgroundResource(R.color.colorA);
                     clicked = 3;
                     handler.post(runnable);
                     break;
@@ -156,6 +156,7 @@ public class RunningActivity extends AppCompatActivity {
                     timerText.setText(dataFormat.format(0));
                     counts[clicked] += count;
                     texts[clicked].setText(dataFormat.format(counts[clicked]*period));
+                    texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
                     count = 0;
                     break;
 

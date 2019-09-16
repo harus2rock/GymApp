@@ -33,7 +33,6 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="in Gym"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_head" />
 
@@ -42,10 +41,12 @@
     <TextView
         android:id="@+id/text4"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textSize="@dimen/text_size_inner"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@+id/button_4"
+        app:layout_constraintBottom_toBottomOf="@+id/button_4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_4"/>
 
@@ -63,10 +64,12 @@
     <TextView
         android:id="@+id/text5"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textSize="@dimen/text_size_inner"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button_4"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@+id/button_5"
+        app:layout_constraintBottom_toBottomOf="@+id/button_5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_5"/>
 
@@ -84,10 +87,12 @@
     <TextView
         android:id="@+id/text9"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textSize="@dimen/text_size_inner"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button_5"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@+id/button_9"
+        app:layout_constraintBottom_toBottomOf="@+id/button_9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_9"/>
 
@@ -105,10 +110,12 @@
     <TextView
         android:id="@+id/text10"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textSize="@dimen/text_size_inner"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button_9"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@+id/button_10"
+        app:layout_constraintBottom_toBottomOf="@+id/button_10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_10"/>
 
@@ -126,10 +133,12 @@
     <TextView
         android:id="@+id/text_stop"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textSize="@dimen/text_size_inner"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button_10"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@+id/button_stop"
+        app:layout_constraintBottom_toBottomOf="@+id/button_stop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_stop"/>
 
@@ -138,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/colorA"
+        android:background="@color/colorZ"
         android:text="Stop"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/button_10"
