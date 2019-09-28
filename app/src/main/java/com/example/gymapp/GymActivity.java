@@ -19,9 +19,11 @@ public class GymActivity extends AppCompatActivity {
         // ボタン
         Button running = findViewById(R.id.button_running);
         Button machine = findViewById(R.id.button_machine);
+        Button view = findViewById(R.id.button_view);
         Button home = findViewById(R.id.button_home);
         running.setOnClickListener(buttonClick);
         machine.setOnClickListener(buttonClick);
+        view.setOnClickListener(buttonClick);
         home.setOnClickListener(buttonClick);
 
     }
@@ -36,6 +38,11 @@ public class GymActivity extends AppCompatActivity {
                     break;
 
                 case R.id.button_machine :
+                    break;
+
+                case R.id.button_view :
+                    Intent intent_view = new Intent(getApplication(), ViewActivity.class);
+                    startActivity(intent_view);
                     break;
 
                 case R.id.button_home :

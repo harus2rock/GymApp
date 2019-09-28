@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GymActivity">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/layout_clock"
@@ -14,7 +14,7 @@
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" >
+        app:layout_constraintRight_toRightOf="parent">
 
         <DigitalClock
             android:id="@+id/clock"
@@ -33,53 +33,31 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="in Gym"
+            android:text="View"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_head" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_running"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Running"
-        android:textSize="@dimen/text_size_inner"
-        android:layout_margin="10dp"
-        android:background="@color/colorA"
-        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
-        app:layout_constraintBottom_toTopOf="@+id/button_machine"
-        app:layout_constraintVertical_chainStyle="packed"/>
 
-    <Button
-        android:id="@+id/button_machine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Machine"
-        android:textSize="@dimen/text_size_inner"
-        android:background="@color/colorB"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button_running"
-        app:layout_constraintBottom_toTopOf="@+id/button_view"/>
-
-    <Button
-        android:id="@+id/button_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View"
-        android:textSize="@dimen/text_size_inner"
-        android:background="@color/colorA"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button_machine"
-        app:layout_constraintBottom_toTopOf="@+id/button_home"/>
-
-    <Button
-        android:id="@+id/button_home"
+    <TextView
+        android:id="@+id/tbd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
+        android:text="TBD."
+        android:textSize="@dimen/text_size_inner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_clock"
+        app:layout_constraintBottom_toTopOf="@id/button_back" />
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbd"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
