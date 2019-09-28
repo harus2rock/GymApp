@@ -1,6 +1,8 @@
 package com.example.gymapp;
 
+import android.content.ContentValues;
 import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -49,6 +52,11 @@ public class RunningActivity extends AppCompatActivity {
     private int count, period;
     private int[] counts;
     private int clicked;
+
+    // Saving data
+    private RunningOpenHelper helper;
+    private  SQLiteDatabase db;
+    ArrayList<ContentValues> insertValues = new ArrayList<ContentValues>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,26 +112,60 @@ public class RunningActivity extends AppCompatActivity {
                     // Stop callbacks when other button was clicked before
                     if (count != 0) {
                         handler.removeCallbacks(runnable);
+
+                        // Reset timer
                         timerText.setText(dataFormat.format(0));
+
+                        // Add data to insertValues
+                        addData(speeds[clicked], count);
+
+                        // Sum counts
                         counts[clicked] += count;
+
+                        // Display counts and distance
                         String time = String.valueOf(dataFormat.format(counts[clicked]*period));
                         String distance = String.format(Locale.US," (%.2f km)", (float)counts[clicked]*speeds[clicked]);
 //                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
                         texts[clicked].setText((time+distance));
                         texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
+
+                        // Reset count
                         count = 0;
                     }
 
+                    // Restart
                     if (view.getId() != R.id.button_stop){
                         List<Integer> list = Arrays.asList(ids_button);
                         int index = list.indexOf(view.getId());
                         texts[index].setBackgroundResource(R.color.colorA);
                         clicked = index;
                         handler.post(runnable);
+                    } else {
+                        if(helper == null) {
+                            helper = new RunningOpenHelper(getApplicationContext());
+                        }
+
+                        if(db == null) {
+                            db = helper.getWritableDatabase();
+                        }
+
+                        for (ContentValues values: insertValues) {
+                            db.insert("runningdb", null, values);
+                        }
                     }
 
                     break;
             }
         }
     };
+
+    private void addData(float speed, int time) {
+
+        ContentValues values = new ContentValues();
+        values.put("speed", speed);
+        values.put("time", time);
+
+        insertValues.add(values);
+    }
+
 }
