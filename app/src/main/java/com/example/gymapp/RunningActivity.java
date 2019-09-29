@@ -162,7 +162,7 @@ public class RunningActivity extends AppCompatActivity {
     private void addData(float speed, int time) {
 
         ContentValues values = new ContentValues();
-        values.put("speed", speed);
+        values.put("speed", speed / period * 3600000);
         values.put("time", time);
 
         insertValues.add(values);

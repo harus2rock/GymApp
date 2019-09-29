@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class ViewActivity extends AppCompatActivity {
 
     private RunningOpenHelper helper;
@@ -63,13 +66,16 @@ public class ViewActivity extends AppCompatActivity {
         );
 
         cursor.moveToFirst();
-
         StringBuilder sbuilder = new StringBuilder();
 
+        SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
+//        TODO: period to be static
+        int period = 100;
+
         for (int i=0; i<cursor.getCount(); i++){
-            sbuilder.append(cursor.getFloat(0));
+            sbuilder.append(String.format(Locale.US,"%.1f",cursor.getDouble(0)));
             sbuilder.append(" : ");
-            sbuilder.append(cursor.getInt(1));
+            sbuilder.append(dataFormat.format(cursor.getInt(1) * period));
             sbuilder.append("\n");
             cursor.moveToNext();
         }
