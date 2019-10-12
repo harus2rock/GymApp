@@ -67,9 +67,9 @@ public class RunningActivity extends AppCompatActivity {
         count = 0;
         Resources res = getResources();
         period = res.getInteger(R.integer.period); // interval: msec
-        for (int i=0; i<speeds.length; i++) {
-            speeds[i] = speeds[i] * period / 3600000;
-        }
+//        for (int i=0; i<speeds.length; i++) {
+//            speeds[i] = speeds[i] * period / 3600000;
+//        }
         counts = new int[4];
         Arrays.fill(counts, 0); // initialize counts
 
@@ -125,8 +125,8 @@ public class RunningActivity extends AppCompatActivity {
 
                         // Display counts and distance
                         String time = String.valueOf(dataFormat.format(counts[clicked]*period));
-                        String distance = String.format(Locale.US," (%.2f km)", (float)counts[clicked]*speeds[clicked]);
-//                        texts[clicked].setText(dataFormat.format(counts[clicked]*period));
+                        Float dist = counts[clicked]*speeds[clicked]*period/3600000;
+                        String distance = String.format(Locale.US," (%.2f km)", dist);
                         texts[clicked].setText((time+distance));
                         texts[clicked].setBackgroundColor(Color.argb(0,0,0,0));
 
@@ -145,7 +145,6 @@ public class RunningActivity extends AppCompatActivity {
                         if(helper == null) {
                             helper = new RunningOpenHelper(getApplicationContext());
                         }
-
                         if(db == null) {
                             db = helper.getWritableDatabase();
                         }
@@ -163,7 +162,7 @@ public class RunningActivity extends AppCompatActivity {
     private void addData(float speed, int time) {
 
         ContentValues values = new ContentValues();
-        values.put("speed", speed / period * 3600000);
+        values.put("speed", speed);
         values.put("time", time);
 
         insertValues.add(values);
