@@ -28,7 +28,9 @@ public class ViewActivity extends AppCompatActivity {
 
         // ボタン
         Button back = findViewById(R.id.button_back);
+        Button delete = findViewById(R.id.button_delete);
         back.setOnClickListener(buttonClick);
+        delete.setOnClickListener(buttonClick);
 
         // textview
         textView = findViewById(R.id.text_view);
@@ -42,6 +44,10 @@ public class ViewActivity extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.button_back :
                     finish();
+                    break;
+
+                case R.id.button_delete :
+                    deleteData();
                     break;
             }
         }
@@ -58,7 +64,7 @@ public class ViewActivity extends AppCompatActivity {
 
         Cursor cursor = db.query(
                 "runningdb",
-                new String[] { "speed", "time"},
+                new String[] { "_id", "speed", "time"},
                 null,
                 null,
                 null,
@@ -74,9 +80,10 @@ public class ViewActivity extends AppCompatActivity {
         int period = res.getInteger(R.integer.period);
 
         for (int i=0; i<cursor.getCount(); i++){
-            sbuilder.append(String.format(Locale.US,"%.1f",cursor.getDouble(0)));
+            sbuilder.append(String.format(Locale.US, "%d : ",cursor.getInt(0)));
+            sbuilder.append(String.format(Locale.US,"%.1f",cursor.getDouble(1)));
             sbuilder.append(" : ");
-            sbuilder.append(dataFormat.format(cursor.getInt(1) * period));
+            sbuilder.append(dataFormat.format(cursor.getInt(2) * period));
             sbuilder.append("\n");
             cursor.moveToNext();
         }
@@ -84,5 +91,17 @@ public class ViewActivity extends AppCompatActivity {
         cursor.close();
 
         textView.setText(sbuilder.toString());
+    }
+
+    private void deleteData() {
+        if(helper == null){
+            helper = new RunningOpenHelper(getApplicationContext());
+        }
+        if(db == null){
+            db = helper.getReadableDatabase();
+        }
+
+        db.delete("runningdb", null, null);
+        readData();
     }
 }
