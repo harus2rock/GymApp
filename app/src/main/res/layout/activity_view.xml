@@ -39,21 +39,30 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <HorizontalScrollView
         android:id = "@+id/scrollView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_clock"
         app:layout_constraintBottom_toTopOf="@id/button_back">
 
-        <TextView
-            android:id="@+id/text_view"
+        <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Viewing here"
-            android:textSize="@dimen/text_size_inner" />
+            android:layout_height="wrap_content">
 
-    </ScrollView>
+            <TextView
+                android:id="@+id/text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Viewing here"
+                android:textSize="@dimen/text_size_inner" />
+
+        </ScrollView>
+
+    </HorizontalScrollView>
+
 
     <Button
         android:id="@+id/button_delete"

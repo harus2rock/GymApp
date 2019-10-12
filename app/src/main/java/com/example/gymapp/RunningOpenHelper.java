@@ -24,11 +24,11 @@ public class RunningOpenHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     _ID + " INTEGER PRIMARY KEY, " +
-//                    COLUMN_NAME_YEAR + " INTEGER, " +
-//                    COLUMN_NAME_MONTH + " INTEGER, " +
-//                    COLUMN_NAME_DAY + " INTEGER, " +
+                    COLUMN_NAME_YEAR + " INTEGER, " +
+                    COLUMN_NAME_MONTH + " INTEGER, " +
+                    COLUMN_NAME_DAY + " INTEGER, " +
                     COLUMN_NAME_SPEED + " REAL, " +
-//                    COLUMN_NAME_START + " INTEGER, " +
+                    COLUMN_NAME_START + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
                     COLUMN_NAME_TIME + " INTEGER)";
 
     private static final String SQL_DELETE_ENTRIES =

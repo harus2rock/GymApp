@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -67,9 +68,6 @@ public class RunningActivity extends AppCompatActivity {
         count = 0;
         Resources res = getResources();
         period = res.getInteger(R.integer.period); // interval: msec
-//        for (int i=0; i<speeds.length; i++) {
-//            speeds[i] = speeds[i] * period / 3600000;
-//        }
         counts = new int[4];
         Arrays.fill(counts, 0); // initialize counts
 
@@ -160,7 +158,6 @@ public class RunningActivity extends AppCompatActivity {
     };
 
     private void addData(float speed, int time) {
-
         ContentValues values = new ContentValues();
         values.put("speed", speed);
         values.put("time", time);

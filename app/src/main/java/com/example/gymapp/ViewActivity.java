@@ -23,16 +23,16 @@ public class ViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // レイアウトファイル
+        // layout file
         setContentView(R.layout.activity_view);
 
-        // ボタン
+        // Button
         Button back = findViewById(R.id.button_back);
         Button delete = findViewById(R.id.button_delete);
         back.setOnClickListener(buttonClick);
         delete.setOnClickListener(buttonClick);
 
-        // textview
+        // textView
         textView = findViewById(R.id.text_view);
 
         readData();
@@ -64,7 +64,7 @@ public class ViewActivity extends AppCompatActivity {
 
         Cursor cursor = db.query(
                 "runningdb",
-                new String[] { "_id", "speed", "time"},
+                new String[] { "_id", "start", "speed", "time"},
                 null,
                 null,
                 null,
@@ -79,11 +79,16 @@ public class ViewActivity extends AppCompatActivity {
         Resources res = getResources();
         int period = res.getInteger(R.integer.period);
 
+        sbuilder.append("id : TimeStamp : Speed (km/h) : Time\n\n");
+
         for (int i=0; i<cursor.getCount(); i++){
+
+//          TODO: Calculate start-time from timestamp and time
+
             sbuilder.append(String.format(Locale.US, "%d : ",cursor.getInt(0)));
-            sbuilder.append(String.format(Locale.US,"%.1f",cursor.getDouble(1)));
-            sbuilder.append(" : ");
-            sbuilder.append(dataFormat.format(cursor.getInt(2) * period));
+            sbuilder.append(cursor.getString(1));
+            sbuilder.append(String.format(Locale.US,"  %.1f (km/h) ",cursor.getDouble(2)));
+            sbuilder.append(dataFormat.format(cursor.getInt(3) * period));
             sbuilder.append("\n");
             cursor.moveToNext();
         }
