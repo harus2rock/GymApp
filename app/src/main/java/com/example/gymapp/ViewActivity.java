@@ -1,5 +1,6 @@
 package com.example.gymapp;
 
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -69,8 +70,8 @@ public class ViewActivity extends AppCompatActivity {
         StringBuilder sbuilder = new StringBuilder();
 
         SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
-//        TODO: period to be static
-        int period = 100;
+        Resources res = getResources();
+        int period = res.getInteger(R.integer.period);
 
         for (int i=0; i<cursor.getCount(); i++){
             sbuilder.append(String.format(Locale.US,"%.1f",cursor.getDouble(0)));

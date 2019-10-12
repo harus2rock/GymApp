@@ -65,7 +65,8 @@ public class RunningActivity extends AppCompatActivity {
         setContentView(R.layout.activity_running);
 
         count = 0;
-        period = 100; // interval: 100msec
+        Resources res = getResources();
+        period = res.getInteger(R.integer.period); // interval: msec
         for (int i=0; i<speeds.length; i++) {
             speeds[i] = speeds[i] * period / 3600000;
         }
