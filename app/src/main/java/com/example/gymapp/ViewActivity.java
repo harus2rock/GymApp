@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -37,6 +40,14 @@ public class ViewActivity extends AppCompatActivity {
 
         Cursor cursor = readData();
 //        viewTextData(cursor);
+
+        ViewFragmentPagerAdapter adapter = new ViewFragmentPagerAdapter(getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.layout_pager);
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     private View.OnClickListener buttonClick = new View.OnClickListener() {
