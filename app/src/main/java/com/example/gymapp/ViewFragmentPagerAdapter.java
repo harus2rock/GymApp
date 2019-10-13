@@ -1,5 +1,7 @@
 package com.example.gymapp;
 
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -7,9 +9,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 public class ViewFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private CharSequence[] tabTitles = {"String","Graph"};
+    private String result;
 
-    public ViewFragmentPagerAdapter(FragmentManager fm){
+    public ViewFragmentPagerAdapter(FragmentManager fm, String result_text){
         super(fm);
+        result = result_text;
     }
 
     @Override
@@ -21,7 +25,11 @@ public class ViewFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch(position) {
             case 0:
-                return new ViewStringFragment();
+                ViewStringFragment fragment = new ViewStringFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("result", result);
+                fragment.setArguments(bundle);
+                return fragment;
             case 1:
                 return new ViewGraphFragment();
             default:

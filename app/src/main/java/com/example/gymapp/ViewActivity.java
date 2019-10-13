@@ -39,9 +39,10 @@ public class ViewActivity extends AppCompatActivity {
 //        textView = findViewById(R.id.text_view);
 
         Cursor cursor = readData();
+        String result_text = viewTextData(cursor);
 //        viewTextData(cursor);
 
-        ViewFragmentPagerAdapter adapter = new ViewFragmentPagerAdapter(getSupportFragmentManager());
+        ViewFragmentPagerAdapter adapter = new ViewFragmentPagerAdapter(getSupportFragmentManager(), result_text);
         ViewPager viewPager = findViewById(R.id.layout_pager);
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
@@ -81,7 +82,7 @@ public class ViewActivity extends AppCompatActivity {
         return cursor;
     }
 
-    private void viewTextData(Cursor cursor){
+    private String viewTextData(Cursor cursor){
         StringBuilder sbuilder = new StringBuilder();
         SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
 
@@ -107,7 +108,9 @@ public class ViewActivity extends AppCompatActivity {
 
         cursor.close();
 
-        textView.setText(sbuilder.toString());
+        return sbuilder.toString();
+
+//        textView.setText(sbuilder.toString());
     }
 
     private void deleteData() {
