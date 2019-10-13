@@ -159,8 +159,15 @@ public class RunningActivity extends AppCompatActivity {
 
     private void addData(float speed, int time) {
         ContentValues values = new ContentValues();
+
+        // speed and time
         values.put("speed", speed);
         values.put("time", time);
+
+        // Timestamp
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        values.put("start", dateFormat.format(cal.getTime()));
 
         insertValues.add(values);
     }

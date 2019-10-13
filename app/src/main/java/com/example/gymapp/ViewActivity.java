@@ -11,7 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class ViewActivity extends AppCompatActivity {
@@ -54,41 +59,33 @@ public class ViewActivity extends AppCompatActivity {
     };
 
     private void readData() {
+        // Check db
         if(helper == null){
             helper = new RunningOpenHelper(getApplicationContext());
         }
-
         if(db == null){
             db = helper.getReadableDatabase();
         }
 
-        Cursor cursor = db.query(
-                "runningdb",
-                new String[] { "_id", "start", "speed", "time"},
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-
+        String sql = "select _id, start, speed, time from runningdb";
+        Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
-        StringBuilder sbuilder = new StringBuilder();
 
-        SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
+        StringBuilder sbuilder = new StringBuilder();
+        SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
+
+        // For calculating running time
         Resources res = getResources();
         int period = res.getInteger(R.integer.period);
 
+        // header
         sbuilder.append("id : TimeStamp : Speed (km/h) : Time\n\n");
 
         for (int i=0; i<cursor.getCount(); i++){
-
-//          TODO: Calculate start-time from timestamp and time
-
             sbuilder.append(String.format(Locale.US, "%d : ",cursor.getInt(0)));
             sbuilder.append(cursor.getString(1));
             sbuilder.append(String.format(Locale.US,"  %.1f (km/h) ",cursor.getDouble(2)));
-            sbuilder.append(dataFormat.format(cursor.getInt(3) * period));
+            sbuilder.append(timeFormat.format(cursor.getInt(3) * period));
             sbuilder.append("\n");
             cursor.moveToNext();
         }
