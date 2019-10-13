@@ -108,7 +108,7 @@ public class RunningActivity extends AppCompatActivity {
                     break;
 
                 default:
-                    // Stop callbacks when other button was clicked before
+                    // Remove callbacks when other button was clicked before
                     if (count != 0) {
                         handler.removeCallbacks(runnable);
 
@@ -132,7 +132,7 @@ public class RunningActivity extends AppCompatActivity {
                         count = 0;
                     }
 
-                    // Restart
+                    // Restart count or saving data to db
                     if (view.getId() != R.id.button_stop){
                         List<Integer> list = Arrays.asList(ids_button);
                         int index = list.indexOf(view.getId());
@@ -140,6 +140,9 @@ public class RunningActivity extends AppCompatActivity {
                         clicked = index;
                         handler.post(runnable);
                     } else {
+                        // add data 'Stop is clicked'
+                        addData(0,0);
+
                         if(helper == null) {
                             helper = new RunningOpenHelper(getApplicationContext());
                         }

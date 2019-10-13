@@ -82,10 +82,14 @@ public class ViewActivity extends AppCompatActivity {
         sbuilder.append("id : TimeStamp : Speed (km/h) : Time\n\n");
 
         for (int i=0; i<cursor.getCount(); i++){
-            sbuilder.append(String.format(Locale.US, "%d : ",cursor.getInt(0)));
-            sbuilder.append(cursor.getString(1));
-            sbuilder.append(String.format(Locale.US,"  %.1f (km/h) ",cursor.getDouble(2)));
-            sbuilder.append(timeFormat.format(cursor.getInt(3) * period));
+            sbuilder.append(String.format(Locale.US, "%d : ", cursor.getInt(0)));
+            if (cursor.getDouble(2) == 0){
+                sbuilder.append("Stop.");
+            } else {
+                sbuilder.append(cursor.getString(1));
+                sbuilder.append(String.format(Locale.US, "  %.1f (km/h) ", cursor.getDouble(2)));
+                sbuilder.append(timeFormat.format(cursor.getInt(3) * period));
+            }
             sbuilder.append("\n");
             cursor.moveToNext();
         }
