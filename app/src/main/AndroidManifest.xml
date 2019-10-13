@@ -9,20 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GymActivity" >
+        <activity android:name=".GymActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".HouseActivity" >
+        <activity android:name=".HouseActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".RunningActivity" >
+        <activity android:name=".RunningActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ViewActivity" >
+        <activity android:name=".ViewActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
