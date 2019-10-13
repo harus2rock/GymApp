@@ -11,12 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class ViewActivity extends AppCompatActivity {
@@ -40,7 +35,8 @@ public class ViewActivity extends AppCompatActivity {
         // textView
         textView = findViewById(R.id.text_view);
 
-        readData();
+        Cursor cursor = readData();
+        viewTextData(cursor);
     }
 
     private View.OnClickListener buttonClick = new View.OnClickListener() {
@@ -58,7 +54,7 @@ public class ViewActivity extends AppCompatActivity {
         }
     };
 
-    private void readData() {
+    private Cursor readData() {
         // Check db
         if(helper == null){
             helper = new RunningOpenHelper(getApplicationContext());
@@ -71,6 +67,10 @@ public class ViewActivity extends AppCompatActivity {
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
 
+        return cursor;
+    }
+
+    private void viewTextData(Cursor cursor){
         StringBuilder sbuilder = new StringBuilder();
         SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
 
@@ -108,6 +108,6 @@ public class ViewActivity extends AppCompatActivity {
         }
 
         db.delete("runningdb", null, null);
-        readData();
+        viewTextData(readData());
     }
 }
