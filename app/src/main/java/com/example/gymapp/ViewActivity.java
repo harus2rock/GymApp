@@ -33,10 +33,10 @@ public class ViewActivity extends AppCompatActivity {
         delete.setOnClickListener(buttonClick);
 
         // textView
-        textView = findViewById(R.id.text_view);
+//        textView = findViewById(R.id.text_view);
 
         Cursor cursor = readData();
-        viewTextData(cursor);
+//        viewTextData(cursor);
     }
 
     private View.OnClickListener buttonClick = new View.OnClickListener() {
